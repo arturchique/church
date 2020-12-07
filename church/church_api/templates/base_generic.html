@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% block title %}<title>Georgy Church</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/c36d253536.js"></script>
+
+    <!-- Добавление дополнительного статического CSS файла-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row d-flex justify-content-between align-items-center">
+                <div class="col-lg-5">
+                    <nav class="navigation">
+                        <ul class="d-flex justify-content-between">
+                            <li><a href="#">Новости</a></li>
+                            <li><a href="#">Расписание богослужения</a></li>
+                            <li><a href="#">Таинства</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contacts d-flex justify-content-between">
+                        <div class="contacts__phone">
+                            <div class="contacts__phone__item">
+                                +7 (977) 557-74-62
+                            </div>
+                            <div class="contacts__phone__mail">
+                                mail@sv-georgy.ru
+                            </div>
+                        </div>
+                        <div class="contacts__address">
+                            <div class="contacts__address__item">
+                                мкр. Град Московский, ул. Радужная №29
+                            </div>
+                            <div class="contacts__address__concrete text-center">
+                                (возле Передельцевского кладбища)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="photo d-flex justify-content-center align-items-center">
+        <div class="photo__title">
+            Храмовый комплекс святого великомученика Георгия в Московском г. Москвы
+        </div>
+    </section>
+    {% block content %}{% endblock %}
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__text">
+                Храмовый комплекс в честь святого великомученика Георгия в Московском г. Москвы
+            </div>
+            <div class="footer__icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-vk"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
