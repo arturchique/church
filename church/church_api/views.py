@@ -7,3 +7,11 @@ def index(request):
         'index.html',
         context={},
     )
+
+
+def asks(request):
+    return render(
+        request,
+        'asks.html',
+        context={},
+    )

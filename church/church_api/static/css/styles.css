@@ -19,10 +19,29 @@ a:hover {
 ul, li {
     list-style: none;
 }
+p {
+	font-size: 16px;
+	color: #6d5822;
+}
 
 h1 {
 	font-size: 40px;
 	color: #6d5822;
+}
+
+h3 {
+	font-size: 20px;
+	color: #6d5822;
+}
+
+.av {
+	height: 192px;
+	width: 160px;
+	border-radius: 4px;
+	border-color: #000;
+	border-width: 1px;
+	border-style: solid;
+	margin-top: 40px;
 }
 
 
@@ -60,6 +79,10 @@ header {
 
 /* FOOTER */
 
+footer {
+	margin-top: 40px;
+}
+
 .footer__text {
 	color: #ffffff;
 	font-size: 10px;
@@ -77,26 +100,106 @@ header {
 
 /* INDEX CONTENT */
 
-.main, .sidebar {
-	background-color: #555;
-	color: white;
+.main, .sidebar__shrines, 
+.sidebar__trebs, .sidebar__prays, 
+.calendar, .nameday, .history__content {
 	border-radius: 16px;
 	background-color: #efdac3;
+	padding-left: 40px;
+	padding-top: 30px;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+	margin-bottom: 30px;
 }
-
 
 .main__building, .main__news, .main__origin {
 	height: 525px;
 }
 
-.main__av {
-	height: 192px;
-	width: 160px;
-	border-radius: 4px;
-	border-color: #000;
+.sidebar__shrines, .sidebar__trebs, .sidebar__prays {
+	height: 494.5px;
+}
+
+.calendar, .nameday {
+	height: 326px;
+}
+
+.main__line {
+	height: 2px;
+	width: 95%;
+	margin-top: -30px;
+	margin-bottom: 30px;
+	background-color: white;
+}
+
+
+/* GALLERY*/
+
+.gallery {
+	margin-top: 140px;
+}
+
+.item {
+	background-color: #555;
+	border-radius: 20px;
+	background-color: rgb(239, 218, 195);
 	border-width: 2px;
-	border-style: solid;
-	background-color: #000;
-	color: #000;
-	font-size: 22px;
+	border-color: black;
+  	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  	width: 90%;
+  	height: 288px;
+}
+
+.owl-stage {
+	margin-left: 2%;
+}
+
+.owl-carousel {
+	position: relative;
+	margin-top: 40px;
+	margin-bottom: 78px;
+}
+
+.owl-dots {
+	display: none;
+}
+
+.owl-prev {
+	position: absolute;
+	bottom: 50%;
+	background-image: url("../imgs/prev.png");
+}
+
+.owl-next {
+	position: absolute;
+	left: 100%;
+	bottom: 50%;
+    background-image: url("../imgs/next.png");
+}
+
+
+.owl-next:onclick {
+	border: none;
+}
+
+
+/* HISTORY */
+
+.history__content {
+	margin-top: 20px;	
+	padding-bottom: 20px;	
+}
+
+.history .av {
+	margin-top: 0;
+	width: 160px;
+	margin-right: 20px;
+	margin-bottom: 17px;
+}
+
+.history__text__string {
+	line-height: 200%
+}
+
+.history__paragraph {
+	margin-top: -14px;	
 }

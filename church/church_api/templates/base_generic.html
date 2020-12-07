@@ -11,6 +11,12 @@
     <!-- Добавление дополнительного статического CSS файла-->
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
 
 </head>
 <body>
@@ -55,6 +61,41 @@
         </div>
     </section>
     {% block content %}{% endblock %}
+    <section class="history">
+        <div class="container">
+            <h1>
+                История храма
+            </h1>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="history__content">
+                        <div class="d-flex">
+                            <div class="av">
+                                
+                            </div>
+                            <div class="history__text">
+                                <h3>
+                                    Храм святителя Спиридона, епископа Тримифунтского, в Московском.
+                                </h3>
+                                <p class="history__text__content">
+                                    <span class="history__text__string">В октябре 2017 года положено начало строительства храма в честь святителя Спиридона.</span> 
+                                <br>    
+                                    <span class="history__text__string">К концу декабря уже воздвигли стены из сруба.</span>
+                                <br> 
+                                    <span class="history__text__string">В феврале 2018 года была установлена крыша.</span>
+                                <br>    
+                                    <span class="history__text__string">25 марта 2018 года был совершен чин освящения купола и Креста. Многие жители города пришли </span> <br> молитвенно разделить радость этого значимого события. В завершении чина освящения под пение <br> тропарей все присутствующие приложились к вновь освященному Кресту и куполу, имея уникальную <br> возможность почтить святыни, пока они еще не водружены на здание храма.
+                                </p>
+                            </div>
+                        </div>
+                        <p class="history__paragraph">
+                            Для многих это стало радостным и долгожданным событием, ведь храм всегда венчается куполом, который символизирует Царство Небесное, а Крест является символом победы над злом. Именно купола и Креста не хватало для завершения внешнего облика храма.С апреля 2018 года началось внутреннее благоустройство храма, установка иконостаса, закупка церковной утвари, написание икон и др.13 октября 2018 года состоялось торжественное освящение малого храма в честь святителя Спиридона, епископа Тримифунтского, чудотворца. Чин малого освящения храма совершил протоиерей Евгений Сизов, благочинный Ильинского церковного округа г. Москвы. С этого момента началась регулярная Литургическая жизнь прихода.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <footer class="footer">
         <div class="container">
             <div class="footer__text">
