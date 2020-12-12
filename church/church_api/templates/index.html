@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<section class="content">
+<section id="content">
 	<div class="container">
 		<div class="row d-flex justify-content-between">
 			<div class="col-lg-7">
@@ -23,8 +23,22 @@
 						<h1 class="main__news__title">
 							Новости
 						</h1>
-						<div class="av">
+						<!--<div class="av">
 							
+						</div>-->
+						<div class="new d-flex">
+							<img src="../static/imgs/{{ img }}" alt="Photo" class="av">
+							<div class="new__text">
+								<h3>
+									{{ post.title }}
+								</h3>
+								<p>
+									{{ post.text }}
+								</p>
+								<p class="time">
+									{{ post.time }}
+								</p>
+							</div>
 						</div>
 
 					</div>
@@ -52,10 +66,14 @@
 						</a>
 					</div>
 					<div class="sidebar__prays">
-						<h1>Богослужения</h1>
+						<a href="/shrines">
+							<h1>Богослужения</h1>
+						</a>
 					</div>
 					<div class="sidebar__shrines">
-						<h1>Святыни</h1>
+						<a href="/shrines">
+							<h1>Святыни</h1>
+						</a>
 					</div>
 				</div>
 				<div class="nameday">
