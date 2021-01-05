@@ -5,4 +5,6 @@ urlpatterns = [
     path('', index, name="index"),
     path('treby/', asks, name="asks"),
     path('shrines/', shrines, name="shrines"),
+    path('formation/', formation, name="formation"),
+    path('ministry/', ministry, name="ministry"),
 ]

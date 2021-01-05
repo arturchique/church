@@ -32,3 +32,19 @@ def shrines(request):
         'shrines.html',
         context={},
     )
+
+
+def formation(request):
+    return render(
+        request,
+        "formation.html",
+        context={},
+    )
+
+
+def ministry(request):
+    return render(
+        request,
+        "ministry.html",
+        context={}
+    )
