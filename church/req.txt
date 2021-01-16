@@ -39,7 +39,6 @@ funcsigs==1.0.2
 future==0.18.2
 geographiclib==1.50
 geopy==2.0.0
-get==2019.4.13
 google-api-core==1.25.0
 google-api-python-client==1.12.8
 google-auth==1.24.0
