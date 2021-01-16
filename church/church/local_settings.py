@@ -12,6 +12,8 @@ DEBUG = True
 ALLOWED_HOSTS = ["127.0.0.1", "178.62.195.87", "saint.georgy.church"]
 
 
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
