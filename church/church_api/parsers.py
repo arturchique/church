@@ -35,7 +35,7 @@ class NewsParser:
 
         try:
             return News.objects.get(text=text)
-        except ObjectDoesNotExist:
+        except:
             news_obj = News(title=title, text=text, time=date_time, image=image)
             news_obj.save()
             return news_obj
