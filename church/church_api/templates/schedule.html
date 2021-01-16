@@ -1,0 +1,26 @@
+{% extends "shrines.html" %}
+
+{% block photo__title %} Расписание Богослужений {% endblock %}
+
+
+
+{% block paragraph %}
+
+{% for day in schedule %}
+    <div class="shrine">
+		<h3 class="title">
+			{{day.date}}
+		</h3>
+		<h4 class="header">
+	        {{day.day_name}}
+		</h4>
+		<p>
+            {{day.schedule}}
+		</p>
+		<div class="line">
+
+		</div>
+    </div>
+{% endfor %}
+
+{% endblock %}

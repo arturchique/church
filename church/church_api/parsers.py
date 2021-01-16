@@ -1,9 +1,10 @@
-from bs4 import BeautifulSoup
-from urllib.request import urlopen
 from datetime import datetime
 import requests
-from .models import News
+from .models import News, PraySchedule
 from django.core.exceptions import ObjectDoesNotExist
+import httplib2
+import apiclient.discovery
+from oauth2client.service_account import ServiceAccountCredentials
 
 
 class NewsParser:
@@ -22,7 +23,7 @@ class NewsParser:
     def load_concrete_post(post):
         params = {
             "posts": post,
-            "access_token": "982caca3b4f963c83d035a92221bc87f79ee708b90e64b4b045ddef97ed9e5b4dbd621cc9c7a1b253c90e",
+            "access_token": "fbe7c6ebfbe7c6ebfbe7c6eb23fb929815ffbe7fbe7c6eba428a43eb1564d2456216979",
             "v": "5.52"
         }
         data = requests.get(url="https://api.vk.com/method/wall.getById", params=params).json()['response'][0]
@@ -32,10 +33,6 @@ class NewsParser:
         date_time = datetime.fromtimestamp(data['date'])
         image = NewsParser.get_photo(data['attachments']) or None
 
-        print(title)
-        print(text)
-        print(date_time)
-        print(image)
         try:
             return News.objects.get(text=text)
         except ObjectDoesNotExist:
@@ -47,7 +44,7 @@ class NewsParser:
     def load_last_post():
         params = {
             'owner_id': '-151364622',
-            "access_token": "982caca3b4f963c83d035a92221bc87f79ee708b90e64b4b045ddef97ed9e5b4dbd621cc9c7a1b253c90e",
+            "access_token": "fbe7c6ebfbe7c6ebfbe7c6eb23fb929815ffbe7fbe7c6eba428a43eb1564d2456216979",
             "v": "5.52"
         }
         data = requests.get(url="https://api.vk.com/method/wall.get", params=params).json()
@@ -61,4 +58,38 @@ class NewsParser:
         return NewsParser.load_concrete_post(post)
 
 
-# NewsParser.load_last_post()
+class ScheduleParser:
+    """ Use GoogleAPI credentials to create parser """
+    def __init__(self, creds):
+        self.creds = creds
+
+    def parse_schedule(self):
+        spreadsheet_id = "1OrOS3T7Zxk8r93nZ3nmq5seBRmQobWJ-vfgLEaB4utk"
+
+        credentials = ServiceAccountCredentials.from_json_keyfile_dict(
+            self.creds,
+            ["https://www.googleapis.com/auth/spreadsheets",
+             "https://www.googleapis.com/auth/drive"]
+        )
+        http_auth = credentials.authorize(httplib2.Http())
+        service = apiclient.discovery.build("sheets", "v4", http=http_auth)
+
+        values = service.spreadsheets().values().get(
+            spreadsheetId=spreadsheet_id,
+            range="B1:R3",
+            majorDimension="COLUMNS"
+        ).execute()
+        return values
+
+    def load_schedules(self):
+        data = self.parse_schedule()['values']
+        try:
+            PraySchedule.objects.all().delete()
+            for day in data:
+                new_day = PraySchedule(date=day[0],
+                                       day_name=day[1],
+                                       schedule=day[2])
+                new_day.save()
+
+        except:
+            raise KeyError

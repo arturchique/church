@@ -12,28 +12,26 @@
 						<h1 class="main__building__title">
 							Строительство Храма
 						</h1>
-						<div class="av">
-							
-						</div>
+						<img src="../static/imgs/src/build.jpg" alt="" class="main__building__photo" height="400">
 					</div>
 					<div class="main__news">
 						<div class="main__line">
 							
 						</div>
 						<h1 class="main__news__title">
-							Новости
+							<a href="/news">Новости</a>
 						</h1>
 						<!--<div class="av">
 							
 						</div>-->
 						<div class="new d-flex">
-							<img src="../static/imgs/{{ img }}" alt="Photo" class="av">
+							<img src="{{ post.image }}" alt="Photo" class="av">
 							<div class="new__text">
 								<h3>
 									{{ post.title }}
 								</h3>
 								<p>
-									{{ post.text }}
+									{{ text }}
 								</p>
 								<p class="time">
 									{{ post.time }}
@@ -79,16 +77,37 @@
 					<div class="sidebar__trebs">
 						<a href="/treby">
 							<h1>Требы</h1>
+							<img src="../static/imgs/src/trebs.png" alt="">
 						</a>
 					</div>
 					<div class="sidebar__prays">
-						<a href="/shrines">
+						<a href="/schedule">
 							<h1>Богослужения</h1>
+						{% for day in schedule %}
+							<h4>
+								{{ day.date }}
+								<br>
+								<br>
+								{{ day.day_name }}
+								<br>
+								<br>
+							</h4>
+						{% endfor %}
 						</a>
 					</div>
 					<div class="sidebar__shrines">
 						<a href="/shrines">
 							<h1>Святыни</h1>
+							<h4>
+								<br><br>
+								Ковчежец с частицей мощей святого великомученика Георгия
+								<br>
+								<br>
+								Частичка башмачка святителя Спиридона Тримифунтского
+								<br>
+								<br>
+								Частица епитрахили преподобного Серафима Вырицкого
+							</h4>
 						</a>
 					</div>
 				</div>

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'church_api',
+    'django_crontab',
 ]
 
 MIDDLEWARE = [
