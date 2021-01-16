@@ -33,12 +33,12 @@ class NewsParser:
         date_time = datetime.fromtimestamp(data['date'])
         image = NewsParser.get_photo(data['attachments']) or None
 
-        # try:
-        #     return News.objects.get(text=text)
-        # except:
-        news_obj = News(title=title, text=text, time=date_time, image=image)
-        news_obj.save()
-        return news_obj
+        try:
+            return News.objects.get(text=text)
+        except ObjectDoesNotExist:
+            news_obj = News(title=title, text=text, time=date_time, image=image)
+            news_obj.save()
+            return news_obj
 
     @staticmethod
     def load_last_post():
