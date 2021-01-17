@@ -88,6 +88,10 @@ h4 {
 	border-right: 4px;
 }
 
+.bread_crumps {
+	color: #6d5822;
+	font-size: 12px;
+}
 
 /* BASE HEADER */
 
@@ -101,7 +105,7 @@ header {
 }
 
 .contacts {
-	font-size: 10px;
+	font-size: 12px;
 }
 
 
@@ -277,7 +281,6 @@ footer {
 }
 
 .buy_trebs {
-	height: 600px;
 	width: 90%;
 	background-color: beige;
 	margin-left: 3%;
