@@ -2,14 +2,18 @@ from django.shortcuts import render
 from .models import *
 from .parsers import NewsParser, ScheduleParser
 from django.views.generic import ListView
-from .constants import GOOGLE_API_CREDENTIALS
+from .constants import GOOGLE_API_CREDENTIALS, NAME_DAYS
+from datetime import date
+import re
 
 
 def index(request):
     post = News.objects.all().order_by('time').reverse()[0] # NewsParser.load_last_post()
     img = str(post.image).split("/")[-1]
-    text = post.text[:250] + " ..."
+    text = post.text[:250]
     schedule = PraySchedule.objects.all()[:3]
+    name_days = NAME_DAYS[date.today().strftime('%m-%d')]
+    name_days = re.sub(r'\([^\)]+\)', '', name_days)
 
     return render(
         request,
@@ -18,7 +22,8 @@ def index(request):
             'post': post,
             'img': img,
             'text': text,
-            'schedule': schedule
+            'schedule': schedule,
+            'name_days': name_days
         },
     )
 

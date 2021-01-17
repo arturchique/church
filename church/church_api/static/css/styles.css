@@ -60,13 +60,8 @@ h4 {
 }
 
 .av {
-	height: 192px;
-	width: 160px;
+
 	border-radius: 4px;
-	border-color: #000;
-	border-width: 1px;
-	border-style: solid;
-	margin-top: 40px;
 }
 
 .title {
@@ -85,7 +80,13 @@ h4 {
 	margin-top: 35px;
 }
 
+.hover_:hover {
+	color: black;
+}
 
+.main__img {
+	border-right: 4px;
+}
 
 
 /* BASE HEADER */
@@ -107,11 +108,12 @@ header {
 /* BASE PHOTO */
 
 .photo {
-	background: url(../imgs/src/header_img.png);
+	background: url(../imgs/src/header-img.png);
 	background-size: 100% 100%;
 	height: 262px;
 	margin-bottom: 80px;
 }
+
 
 .photo__title {
 	font-family: "Rose";
@@ -185,6 +187,10 @@ footer {
 	margin-top: 14px;
 	margin-left: 22px;
 	margin-right: 12px;
+}
+
+.new .av {
+	margin-top: 40px;
 }
 
 .time {
@@ -333,3 +339,8 @@ footer {
 	margin-left: 0;
 }
 
+
+.leftimg{
+	float: left;
+	margin: 0 7px 7px 7px;
+}
