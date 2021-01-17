@@ -149,3 +149,36 @@ def schedule(request):
             "schedule": schedule
         }
     )
+
+
+def confession(request):
+    bread_crumps = '<u><a href="/">Главная</a></u> / <u><a href="/sacraments">Таинства</a></u> / <u><a href="/sacraments/confession">Исповедь</a></u>'
+    return render(
+        request,
+        'confession.html',
+        context={
+            "bread_crumps": bread_crumps
+        }
+    )
+
+
+def marying(request):
+    bread_crumps = '<u><a href="/">Главная</a></u> / <u><a href="/sacraments">Таинства</a></u> / <u><a href="/sacraments/marying">Венчание</a></u>'
+    return render(
+        request,
+        'marying.html',
+        context={
+            "bread_crumps": bread_crumps
+        }
+    )
+
+
+def build(request):
+    bread_crumps = '<u><a href="/">Главная</a></u> / <u><a href="/build">Строительство храма</a></u>'
+    return render(
+        request,
+        'build.html',
+        context={
+            "bread_crumps": bread_crumps
+        }
+    )
