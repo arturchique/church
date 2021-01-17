@@ -60,7 +60,6 @@ h4 {
 }
 
 .av {
-
 	border-radius: 4px;
 }
 
@@ -105,7 +104,7 @@ header {
 }
 
 .contacts {
-	font-size: 12px;
+	font-size: 14px;
 }
 
 
@@ -176,7 +175,7 @@ footer {
 }
 
 .calendar, .nameday {
-	height: 450px;
+	height: 520px;
 }
 
 .main__line {

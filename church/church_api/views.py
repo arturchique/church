@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render
 from .models import *
 from .parsers import NewsParser, ScheduleParser
@@ -5,6 +6,10 @@ from django.views.generic import ListView
 from .constants import GOOGLE_API_CREDENTIALS, NAME_DAYS
 from datetime import date
 import re
+from pathlib import Path
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 def index(request):
@@ -15,6 +20,12 @@ def index(request):
     name_days = NAME_DAYS[date.today().strftime('%m-%d')]
     name_days = re.sub(r'\([^\)]+\)', '', name_days)
 
+    gallery = []
+    gallery_dir = BASE_DIR / 'static/imgs/gallery/'
+    for root, dirs, files in os.walk(gallery_dir):
+        for file in files:
+            gallery.append(file)
+
     return render(
         request,
         'index.html',
@@ -23,7 +34,8 @@ def index(request):
             'img': img,
             'text': text,
             'schedule': schedule,
-            'name_days': name_days
+            'name_days': name_days,
+            'gallery': gallery
         },
     )
 
