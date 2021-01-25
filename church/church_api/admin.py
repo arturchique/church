@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import News, PraySchedule
+from .models import News, PraySchedule, DayEvents
 
 
 @admin.register(News)
@@ -8,5 +8,10 @@ class NewsAdmin(admin.ModelAdmin):
 
 
 @admin.register(PraySchedule)
-class NewsAdmin(admin.ModelAdmin):
+class ScheduleAdmin(admin.ModelAdmin):
     list_display = ('date', 'day_name')
+
+
+@admin.register(DayEvents)
+class DayEventsAdmin(admin.ModelAdmin):
+    list_display = ('date', 'events')

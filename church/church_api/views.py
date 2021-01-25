@@ -1,7 +1,7 @@
 import os
 from django.shortcuts import render
 from .models import *
-from .parsers import NewsParser, ScheduleParser
+from .parsers import NewsParser, ScheduleParser, DaysParser
 from django.views.generic import ListView
 from .constants import GOOGLE_API_CREDENTIALS, NAME_DAYS
 from datetime import date
@@ -16,9 +16,14 @@ def index(request):
     post = News.objects.all().order_by('time').reverse()[0] # NewsParser.load_last_post()
     img = str(post.image).split("/")[-1]
     text = post.text[:250]
+
     schedule = PraySchedule.objects.all()[:3]
+
     name_days = NAME_DAYS[date.today().strftime('%m-%d')]
     name_days = re.sub(r'\([^\)]+\)', '', name_days)
+
+    days_events = DayEvents.objects.all()[:3]
+
 
     gallery = []
     gallery_dir = BASE_DIR / 'static/imgs/gallery/'
@@ -35,7 +40,8 @@ def index(request):
             'text': text,
             'schedule': schedule,
             'name_days': name_days,
-            'gallery': gallery
+            'gallery': gallery,
+            'events': days_events,
         },
     )
 
@@ -128,13 +134,14 @@ def sacraments(request):
     )
 
 
-def parse_news(request):
+def parse(request):
     NewsParser.load_last_post()
 
+    schedule_parser = ScheduleParser(creds=GOOGLE_API_CREDENTIALS)
+    schedule_parser.load_schedules()
 
-def parse_shedules(request):
-    parser = ScheduleParser(creds=GOOGLE_API_CREDENTIALS)
-    parser.load_schedules()
+    day_events_parser = DaysParser(creds=GOOGLE_API_CREDENTIALS)
+    day_events_parser.load_days()
 
 
 def news(request):
@@ -190,6 +197,17 @@ def build(request):
     return render(
         request,
         'build.html',
+        context={
+            "bread_crumps": bread_crumps
+        }
+    )
+
+
+def epiphany(request):
+    bread_crumps = '<u><a href="/">Главная</a></u> / <u><a href="/sacraments">Таинства</a></u> / <u><a href="/sacraments/epiphany">Крещение</a></u>'
+    return render(
+        request,
+        'epiphany.html',
         context={
             "bread_crumps": bread_crumps
         }

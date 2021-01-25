@@ -13,9 +13,9 @@ urlpatterns = [
     path('sacraments/communion/', communion, name="communion"),
     path('sacraments/confession/', confession, name="confession"),
     path('sacraments/marying/', marying, name="marying"),
+    path('sacraments/epiphany/', epiphany, name="epiphany"),
     path('news/', news, name="news"),
-    path('parse_news/', parse_news, name="parse_news"),
-    path('parse_schedule/', parse_shedules, name='parse_schedule'),
+    path('parse/', parse, name="parse"),
     path('schedule/', schedule, name='schedule'),
     path('build/', build, name='build')
 ]
