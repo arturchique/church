@@ -75,13 +75,13 @@
 				<div class="calendar">
 					<h1>Православный календарь</h1>
 					<p>
-						{% for event in events %}
-						<br>
-							{{ event.date }}
-							<br>
-							{{ event.events }}
 						<br><br>
-						{% endfor %}
+							<b>Сегодня:</b><br>
+							{{ event_today }}
+						<br><br>
+							<b>Завтра:</b><br>
+							{{ event_tomorrow}}
+						<br><br>
 					</p>
 				</div>
 			</div>

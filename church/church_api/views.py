@@ -3,8 +3,9 @@ from django.shortcuts import render
 from .models import *
 from .parsers import NewsParser, ScheduleParser, DaysParser
 from django.views.generic import ListView
-from .constants import GOOGLE_API_CREDENTIALS, NAME_DAYS
+from .constants import GOOGLE_API_CREDENTIALS, NAME_DAYS, EVENTS
 from datetime import date
+import datetime
 import re
 from pathlib import Path
 
@@ -15,15 +16,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 def index(request):
     post = News.objects.all().order_by('time').reverse()[0] # NewsParser.load_last_post()
     img = str(post.image).split("/")[-1]
-    text = post.text[:250]
+    text = post.text[:200]
 
     schedule = PraySchedule.objects.all()[:3]
 
     name_days = NAME_DAYS[date.today().strftime('%m-%d')]
     name_days = re.sub(r'\([^\)]+\)', '', name_days)
 
-    days_events = DayEvents.objects.all()[:3]
-
+    event_today = EVENTS[date.today().strftime('%m-%d')]
+    event_tomorrow = EVENTS[(date.today() + datetime.timedelta(days=1)).strftime('%m-%d')]
 
     gallery = []
     gallery_dir = BASE_DIR / 'static/imgs/gallery/'
@@ -41,7 +42,8 @@ def index(request):
             'schedule': schedule,
             'name_days': name_days,
             'gallery': gallery,
-            'events': days_events,
+            'event_today': event_today,
+            'event_tomorrow': event_tomorrow,
         },
     )
 
