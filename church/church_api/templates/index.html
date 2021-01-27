@@ -100,6 +100,7 @@
 					<div class="sidebar__prays">
 						<a href="/schedule">
 							<h1>Богослужения</h1>
+						{% if schedule %}
 						{% for day in schedule %}
 							<h4>
 								<u>{{ day.date }}</u>
@@ -109,7 +110,14 @@
 								<br>
 								<br>
 							</h4>
+
 						{% endfor %}
+						{% else %}
+							<h4>
+								Близжайшие три дня богослужений нет, но посмотрите расписание на <u>другие дни</u>
+								<br><br>
+							</h4>
+						{% endif %}
 						</a>
 					</div>
 					<div class="sidebar__shrines">
