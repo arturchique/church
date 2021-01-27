@@ -1,6 +1,6 @@
 from datetime import datetime
 import requests
-from .models import News, PraySchedule, DayEvents
+from .models import News, PraySchedule
 from django.core.exceptions import ObjectDoesNotExist
 import httplib2
 import apiclient.discovery
