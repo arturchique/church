@@ -93,38 +93,3 @@ class ScheduleParser:
 
         except:
             raise KeyError
-
-
-class DaysParser:
-    """ Use GoogleAPI credentials to create parser """
-    def __init__(self, creds):
-        self.creds = creds
-
-    def parse_days(self):
-        spreadsheet_id = "1OrOS3T7Zxk8r93nZ3nmq5seBRmQobWJ-vfgLEaB4utk"
-
-        credentials = ServiceAccountCredentials.from_json_keyfile_dict(
-            self.creds,
-            ["https://www.googleapis.com/auth/spreadsheets",
-             "https://www.googleapis.com/auth/drive"]
-        )
-        http_auth = credentials.authorize(httplib2.Http())
-        service = apiclient.discovery.build("sheets", "v4", http=http_auth)
-
-        values = service.spreadsheets().values().get(
-            spreadsheetId=spreadsheet_id,
-            range="B10:D11",
-            majorDimension="COLUMNS"
-        ).execute()
-        return values
-
-    def load_days(self):
-        data = self.parse_days()['values']
-        try:
-            DayEvents.objects.all().delete()
-            for day in data:
-                new_day = DayEvents(date=day[0],
-                                    events=day[1])
-                new_day.save()
-        except:
-            raise KeyError

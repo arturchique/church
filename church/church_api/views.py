@@ -1,7 +1,7 @@
 import os
 from django.shortcuts import render
 from .models import *
-from .parsers import NewsParser, ScheduleParser, DaysParser
+from .parsers import NewsParser, ScheduleParser
 from django.views.generic import ListView
 from .constants import GOOGLE_API_CREDENTIALS, NAME_DAYS, EVENTS
 from datetime import date
@@ -148,9 +148,6 @@ def parse(request):
 
     schedule_parser = ScheduleParser(creds=GOOGLE_API_CREDENTIALS)
     schedule_parser.load_schedules()
-
-    day_events_parser = DaysParser(creds=GOOGLE_API_CREDENTIALS)
-    day_events_parser.load_days()
 
 
 def news(request):
