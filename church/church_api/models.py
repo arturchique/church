@@ -14,8 +14,3 @@ class PraySchedule(models.Model):
     date = models.TextField(verbose_name="Дата и день", help_text="Дата и день", blank=False)
     day_name = models.TextField(verbose_name="Название", help_text="Название", blank=True, null=True)
     schedule = models.TextField(verbose_name="Расписание", help_text="Расписание", blank=False)
-
-
-class DayEvents(models.Model):
-    date = models.TextField(verbose_name="Дата и день", help_text="Дата и день", blank=False)
-    events = models.TextField(verbose_name="События", help_text="События", blank=False)
