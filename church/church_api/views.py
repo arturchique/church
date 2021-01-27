@@ -14,16 +14,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 def index(request):
+    today = date.today().strftime('%m-%d')
+    today_day = date.today().strftime('%d')
+
     post = News.objects.all().order_by('time').reverse()[0] # NewsParser.load_last_post()
     img = str(post.image).split("/")[-1]
     text = post.text[:200]
 
-    schedule = PraySchedule.objects.all()[:3]
+    schedule = []
+    schedule += PraySchedule.objects.filter(date__contains=f"{today_day} ")
+    schedule += PraySchedule.objects.filter(date__contains=f"{(date.today() + datetime.timedelta(days=1)).strftime('%d')} ")
+    schedule += PraySchedule.objects.filter(date__contains=f"{(date.today() + datetime.timedelta(days=2)).strftime('%d')} ")
 
-    name_days = NAME_DAYS[date.today().strftime('%m-%d')]
+    name_days = NAME_DAYS[today]
     name_days = re.sub(r'\([^\)]+\)', '', name_days)
 
-    event_today = EVENTS[date.today().strftime('%m-%d')]
+    event_today = EVENTS[today]
     event_tomorrow = EVENTS[(date.today() + datetime.timedelta(days=1)).strftime('%m-%d')]
 
     gallery = []
@@ -44,6 +50,7 @@ def index(request):
             'gallery': gallery,
             'event_today': event_today,
             'event_tomorrow': event_tomorrow,
+            'day': today_day
         },
     )
 
