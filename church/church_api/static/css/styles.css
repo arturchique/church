@@ -107,6 +107,9 @@ header {
 	font-size: 14px;
 }
 
+.contacts__phone__item {
+	font-size: 16px;
+}
 
 /* BASE PHOTO */
 
@@ -124,6 +127,8 @@ header {
 	letter-spacing: -3px;
 	color: #624c13;
 }
+
+
 
 
 /* BASE FOOTER */
