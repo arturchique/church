@@ -9,7 +9,7 @@ SECRET_KEY = 'nehr^!9q5+&-u-r_-znx5s!(ct#y!83%$h6x84p5d1ch=4ath)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "178.62.195.87", 'georgy-church.ru', "167.99.216.187"]
+ALLOWED_HOSTS = ["127.0.0.1", "178.62.195.87", 'georgy-church.ru', "167.99.216.187", "80.78.247.175"]
 
 DATABASES = {
     'default': {
