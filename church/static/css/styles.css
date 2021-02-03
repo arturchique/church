@@ -107,6 +107,9 @@ header {
 	font-size: 14px;
 }
 
+.contacts__phone__item {
+	font-size: 16px;
+}
 
 /* BASE PHOTO */
 
@@ -126,6 +129,8 @@ header {
 }
 
 
+
+
 /* BASE FOOTER */
 
 footer {
@@ -143,7 +148,7 @@ footer {
 
 .fab {
 	color: white;
-	font-size: 14px;
+	font-size: 30px;
 }
 
 
