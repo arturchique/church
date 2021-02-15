@@ -5,6 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 import httplib2
 import apiclient.discovery
 from oauth2client.service_account import ServiceAccountCredentials
+import logging
 
 
 class NewsParser:
@@ -16,7 +17,11 @@ class NewsParser:
     def get_photo(attachments):
         for item in attachments:
             if item['type'] == 'photo':
-                return item['photo']['photo_1280'] 
+                print(f"\n\n\n\n\n{item['photo']}\n\n\n\n")
+                try:
+                    return item['photo']["1280"]
+                except:
+                    return list(item['photo'].values())[-6]
         return False
 
     @staticmethod
@@ -31,7 +36,7 @@ class NewsParser:
         title = data['text'].split('\n')[0]
         text = "\n".join(data['text'].split('\n')[1:])
         date_time = datetime.fromtimestamp(data['date'])
-        image = NewsParser.get_photo(data['attachments'][-1]) or None
+        image = NewsParser.get_photo(data['attachments'])
 
         try:
             return News.objects.get(text=text)
@@ -47,18 +52,16 @@ class NewsParser:
             "access_token": "fbe7c6ebfbe7c6ebfbe7c6eb23fb929815ffbe7fbe7c6eba428a43eb1564d2456216979",
             "v": "5.52"
         }
-        try:
-            data = requests.get(url="https://api.vk.com/method/wall.get", params=params).json()
 
-            if data['response']['items'][1]['date'] > data['response']['items'][0]['date']:
-                last_post_id = data['response']['items'][1]['id']
-            else:
-                last_post_id = data['response']['items'][0]['id']
+        data = requests.get(url="https://api.vk.com/method/wall.get", params=params).json()
 
-            post = f"-151364622_{last_post_id}"
-            return NewsParser.load_concrete_post(post)
-        except:
-            return
+        if data['response']['items'][1]['date'] > data['response']['items'][0]['date']:
+            last_post_id = data['response']['items'][1]['id']
+        else:
+            last_post_id = data['response']['items'][0]['id']
+
+        post = f"-151364622_{last_post_id}"
+        return NewsParser.load_concrete_post(post)
 
 
 class ScheduleParser:
