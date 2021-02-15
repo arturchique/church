@@ -47,15 +47,18 @@ class NewsParser:
             "access_token": "fbe7c6ebfbe7c6ebfbe7c6eb23fb929815ffbe7fbe7c6eba428a43eb1564d2456216979",
             "v": "5.52"
         }
-        data = requests.get(url="https://api.vk.com/method/wall.get", params=params).json()
+        try:
+            data = requests.get(url="https://api.vk.com/method/wall.get", params=params).json()
 
-        if data['response']['items'][1]['date'] > data['response']['items'][0]['date']:
-            last_post_id = data['response']['items'][1]['id']
-        else:
-            last_post_id = data['response']['items'][0]['id']
+            if data['response']['items'][1]['date'] > data['response']['items'][0]['date']:
+                last_post_id = data['response']['items'][1]['id']
+            else:
+                last_post_id = data['response']['items'][0]['id']
 
-        post = f"-151364622_{last_post_id}"
-        return NewsParser.load_concrete_post(post)
+            post = f"-151364622_{last_post_id}"
+            return NewsParser.load_concrete_post(post)
+        except:
+            return
 
 
 class ScheduleParser:
