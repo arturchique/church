@@ -16,7 +16,7 @@ class NewsParser:
     def get_photo(attachments):
         for item in attachments:
             if item['type'] == 'photo':
-                return item['photo']['photo_1280']
+                return item['photo']['photo_1280'] 
         return False
 
     @staticmethod
