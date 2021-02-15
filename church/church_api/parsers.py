@@ -31,7 +31,7 @@ class NewsParser:
         title = data['text'].split('\n')[0]
         text = "\n".join(data['text'].split('\n')[1:])
         date_time = datetime.fromtimestamp(data['date'])
-        image = NewsParser.get_photo(data['attachments']) or None
+        image = NewsParser.get_photo(data['attachments'][-1]) or None
 
         try:
             return News.objects.get(text=text)
