@@ -40,6 +40,10 @@ p {
 	color: #6d5822;
 }
 
+#shrines img {
+	max-width: 98%;
+}
+
 h1 {
 	font-family: "Rose";
 	font-size: 40px;
@@ -180,7 +184,7 @@ footer {
 }
 
 .calendar, .nameday {
-	height: 520px;
+	height: 600px;
 }
 
 .main__line {
@@ -350,4 +354,43 @@ footer {
 .leftimg{
 	float: left;
 	margin: 0 7px 7px 7px;
+}
+
+
+@media screen and (min-width: 0) and (max-width: 1200px) {
+	.contacts {
+		display: none !important;
+	}
+
+	.photo__title {
+		font-size: 32px;
+	}
+
+	.calendar, .nameday {
+		height: 800px;
+	}
+
+	.main__building, .main__news, .main__origin {
+		height: 600px;
+	}
+
+	.sidebar__shrines, .sidebar__prays, .sidebar__trebs {
+		height: 569.5px !important;
+	}
+
+	.navigation ul{
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+@media screen and (min-width: 0) and (max-width: 550px) {
+	.navigation ul{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.calendar, .nameday {
+		height: 900px;
+	}
 }
