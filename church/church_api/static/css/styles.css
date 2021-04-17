@@ -370,9 +370,7 @@ footer {
 		height: 800px;
 	}
 
-	.main__building, .main__news, .main__origin {
-		height: 600px;
-	}
+
 
 	.sidebar__shrines, .sidebar__prays, .sidebar__trebs {
 		height: 569.5px !important;
@@ -381,6 +379,12 @@ footer {
 	.navigation ul{
 		display: flex;
 		flex-direction: column;
+	}
+}
+
+@media screen and (min-width: 551px) and (max-width: 1200px) {
+	.main__building, .main__news, .main__origin {
+		height: 600px;
 	}
 }
 
@@ -393,4 +397,17 @@ footer {
 	.calendar, .nameday {
 		height: 900px;
 	}
+
+	img {
+		max-width: 98%;
+	}
+
+	.main__news, .main__origin {
+		height: 800px;
+	}
+
+	.main__building {
+		height: 1100px !important;
+	}
+
 }
