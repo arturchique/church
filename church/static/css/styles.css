@@ -402,12 +402,14 @@ footer {
 		max-width: 98%;
 	}
 
-	.main__news, .main__origin {
-		height: 800px;
+	#content img, .history img {
+		display: none;
 	}
 
-	.main__building {
-		height: 1100px !important;
-	}
+
+
+	/*.main__building {*/
+	/*	height: 1100px !important;*/
+	/*}*/
 
 }
