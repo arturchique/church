@@ -82,7 +82,7 @@ class ScheduleParser:
 
         values = service.spreadsheets().values().get(
             spreadsheetId=spreadsheet_id,
-            range="B1:R3",
+            range="B1:Z3",
             majorDimension="COLUMNS"
         ).execute()
         return values
